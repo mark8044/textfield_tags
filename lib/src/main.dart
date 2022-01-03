@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'models.dart';
+import 'package:flutter/scheduler.dart';
 
 typedef String? Validator(String tag);
 
@@ -37,8 +38,11 @@ class TextFieldTags extends StatefulWidget {
   ///Should helper text be displayed
   final bool showHelper;
   
-  ///Should helper text be displayed
+  ///TextEditingController
   final TextEditingController? controller;
+  
+  ///AutocompleteOptions
+  final AutocompleteOptionsBuilder<String> optionsBuilder;
   
   TextFieldTags({
     Key? key,
@@ -50,6 +54,7 @@ class TextFieldTags extends StatefulWidget {
     this.textSeparators = const [" ", ","],
     this.showHelper = true,
     this.controller,
+    required this.optionsBuilder,
     required this.tagsStyler,
     required this.textFieldStyler,
     required this.onTag,
